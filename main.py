@@ -1,18 +1,18 @@
 # Вы приехали помогать на ферму Дядюшки Джо и видите вокруг себя множество разных животных:
 #
-# - гусей "Серый" и "Белый"
-# - корову "Маньку"
-# - овец "Барашек" и "Кудрявый"
-# - кур "Ко-Ко" и "Кукареку"
-# - коз "Рога" и "Копыта"
-# - и утку "Кряква"
+# - + гусей "Серый" и "Белый"
+# - + корову "Маньку"
+# - + овец "Барашек" и "Кудрявый"
+# - + кур "Ко-Ко" и "Кукареку"
+# - + коз "Рога" и "Копыта"
+# - + и утку "Кряква"
 # Со всеми животными вам необходимо как-то взаимодействовать:
 #
-# - кормить
-# - корову и коз доить
-# - овец стричь
-# - собирать яйца у кур, утки и гусей
-# - различать по голосам(коровы мычат, утки крякают и т.д.)
+# - + кормить
+# - + корову и коз доить
+# - + овец стричь
+# - + собирать яйца у кур, утки и гусей
+# - + различать по голосам(коровы мычат, утки крякают и т.д.)
 
 # Задача №1
 # Нужно реализовать классы животных, не забывая использовать наследование,
@@ -35,12 +35,29 @@ class Animals(object):
     name = ""  # имя животного
     fullness = 0
 
-    def voice(self):  # метод который будет определять животное по голосу
-        pass
+    def get_voice(self):  # метод который будет определять животное по голосу
+        user_input = input("Напишите звук, который вы слышали")
+        if user_input.lower() == "му":
+            print("Это корова")
+        elif user_input.lower() == "бе":
+            print("Это баран")
+        elif user_input.lower() == "ме":
+            print("Это коза")
+        elif user_input.lower() == "кря":
+            print("Это утка")
+        elif user_input.lower() == "га":
+            print("Это гусь")
+        elif user_input.lower() == "ко":
+            print("Это курица")
 
     def get_food(self, value):  # метод кормить
         self.fullness += value
         print("{} по имени {} была покормлена. Уровень сытости {}".format(self.kind, self.name, self.fullness))
+
+    def __init__(self, name, weight):
+        self.weight = weight
+        self.name = name
+        all_animal.append({"name":self.name, "weight":self.weight})
 
 
 class Bird(Animals):  # птицы
@@ -51,84 +68,84 @@ class Bird(Animals):  # птицы
         print("{} по имени {} собрали яйцо.".format(self.kind, self.name))
 
 
-class CowGoat(Animals):  #корова, коза
+class CowGoat(Animals):  # корова, коза
 
     kind = ""
     milk = 0
 
-    def get_milk(self):  #доить
+    def get_milk(self):  # доить
         print("{} по имени {} была подоена".format(self.kind, self.name))
 
 
+class Sheep(Animals):  # овца
 
-class Sheep(Animals):  #овца
+    def get_cut(self):  # подстригать
+        print("Овца по имени {} была подстрижена".format(self.name))
 
-    def cut(self):  #подстригать
-        pass
+
+all_animal = []
 
 # Курица Ко-Ко
-chicken_1 = Bird()
+chicken_1 = Bird("Ко-ко", 1)
 chicken_1.kind = "Курица"
-chicken_1.name = "Ко-ко"
-chicken_1.weight = 1
+
+chicken_1.get_eggs()
 
 # Курица Кукареку
-chicken_2 = Bird()
+chicken_2 = Bird("Кукареку", 1.5)
 chicken_2.kind = "Курица"
-chicken_2.name = "Кукареку"
-chicken_1.weight = 1.5
 
 # гусь Серый
-goose1 = Bird()
+goose1 = Bird("Серый", 4)
 goose1.kind = "Гусь"
-goose1.name = "Серый"
-goose1.weight = 3
+
+goose1.get_eggs()
 
 # гусь Белый
-goose2 = Bird()
+goose2 = Bird("Белый", 5)
 goose2.kind = "Гусь"
-goose2.name = "Белый"
-goose2.weight = 5
+
+goose2.get_food(1)
 
 # корова Манька
-cow = CowGoat()
+cow = CowGoat("Манька", 200)
 cow.kind = "Корова"
-cow.name = "Манька"
-cow.weight = 200
+
+cow.get_milk()
 
 # коза Рога
-goat_1 = CowGoat()
+goat_1 = CowGoat("Рога", 50)
 goat_1.kind = "Коза"
-goat_1.name = "Рога"
-goat_1.weight = 50
+
+goat_1.get_milk()
 
 # коза Копыта
-goat_2 = CowGoat()
+goat_2 = CowGoat("Копыта", 43)
 goat_2.kind = "Коза"
-goat_2.name = "Копыта"
-goat_2.weight = 43
+
+goat_2.get_milk()
 
 # утка Кряква
-duck = Bird()
+duck = Bird("Кряква", 0.5)
 duck.kind = "Утка"
-duck.name = "Кряква"
-duck.weight = 0.5
+
+duck.get_eggs()
 
 # овца Барашек
-sheep_1 = Sheep()
-sheep_1.name = "Барашек"
-sheep_1.weight = 45
+sheep_1 = Sheep("Барашек", 45)
+
+sheep_1.get_cut()
 
 # овца Кудрявый
-sheep_2 = Sheep()
-sheep_2.name = "Кудрявый"
-sheep_2.weight = 33
+sheep_2 = Sheep("Кудрявый", 33)
 
+# sheep_2.get_voice()
 
+max_weight = 0
+name_animal = ""
+for animal in all_animal:
+    if animal["weight"] > max_weight:
+        max_weight = animal["weight"]
+        name_animal = animal["name"]
 
-
-
-
-
-
-
+print("Животное с максимальным весом {} его вес {}".format(name_animal, max_weight))
