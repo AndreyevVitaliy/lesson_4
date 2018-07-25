@@ -68,13 +68,22 @@ class Bird(Animals):  # птицы
         print("{} по имени {} собрали яйцо.".format(self.kind, self.name))
 
 
-class CowGoat(Animals):  # корова, коза
+class Cow(Animals):  # корова, коза
 
     kind = ""
     milk = 0
 
     def get_milk(self):  # доить
         print("{} по имени {} была подоена".format(self.kind, self.name))
+
+class Goat(Animals):  # корова, коза
+
+    kind = ""
+    milk = 0
+
+    def get_milk(self):  # доить
+        print("{} по имени {} была подоена".format(self.kind, self.name))
+
 
 
 class Sheep(Animals):  # овца
@@ -108,19 +117,19 @@ goose2.kind = "Гусь"
 goose2.get_food(1)
 
 # корова Манька
-cow = CowGoat("Манька", 200)
+cow = Cow("Манька", 200)
 cow.kind = "Корова"
 
 cow.get_milk()
 
 # коза Рога
-goat_1 = CowGoat("Рога", 50)
+goat_1 = Cow("Рога", 50)
 goat_1.kind = "Коза"
 
 goat_1.get_milk()
 
 # коза Копыта
-goat_2 = CowGoat("Копыта", 43)
+goat_2 = Goat("Копыта", 43)
 goat_2.kind = "Коза"
 
 goat_2.get_milk()
