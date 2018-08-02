@@ -62,10 +62,20 @@ class Animals(object):
 
 class Bird(Animals):  # птицы
 
-    kind = ""
-
     def get_eggs(self):  # собирать яйцо
         print("{} по имени {} собрали яйцо.".format(self.kind, self.name))
+
+class Goose(Bird):  # Гусь
+
+    pass
+
+class Chicken(Bird): #Курица
+
+    pass
+    
+class Duck(Bird):
+
+    pass
 
 
 class Cow(Animals):  # корова, коза
@@ -95,23 +105,23 @@ class Sheep(Animals):  # овца
 all_animal = []
 
 # Курица Ко-Ко
-chicken_1 = Bird("Ко-ко", 1)
+chicken_1 = Chicken("Ко-ко", 1)
 chicken_1.kind = "Курица"
 
 chicken_1.get_eggs()
 
 # Курица Кукареку
-chicken_2 = Bird("Кукареку", 1.5)
+chicken_2 = Chicken("Кукареку", 1.5)
 chicken_2.kind = "Курица"
 
 # гусь Серый
-goose1 = Bird("Серый", 4)
+goose1 = Goose("Серый", 4)
 goose1.kind = "Гусь"
 
 goose1.get_eggs()
 
 # гусь Белый
-goose2 = Bird("Белый", 5)
+goose2 = Goose("Белый", 5)
 goose2.kind = "Гусь"
 
 goose2.get_food(1)
@@ -135,7 +145,7 @@ goat_2.kind = "Коза"
 goat_2.get_milk()
 
 # утка Кряква
-duck = Bird("Кряква", 0.5)
+duck = Duck("Кряква", 0.5)
 duck.kind = "Утка"
 
 duck.get_eggs()
