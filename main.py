@@ -67,15 +67,15 @@ class Bird(Animals):  # птицы
 
 class Goose(Bird):  # Гусь
 
-    pass
+    kind = ""
 
 class Chicken(Bird): #Курица
 
-    pass
+    kind = ""
     
 class Duck(Bird):
 
-    pass
+    kind = ""
 
 
 class Cow(Animals):  # корова, коза
